@@ -24,6 +24,7 @@ from comps.cores.proto.docarray import (
     TextImageDoc,
     MultimodalDoc,
     EmbedMultimodalDoc,
+    Wav2LipDoc,
 )
 
 # Constants
