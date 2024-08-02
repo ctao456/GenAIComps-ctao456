@@ -33,12 +33,7 @@ from tqdm import tqdm
 from Wav2Lip.models import Wav2Lip
 
 device = "hpu" if hthpu.is_available() else "cpu"
-<<<<<<< HEAD
-print('Using {} for inference.'.format(device))
-=======
 print("Using {} for inference.".format(device))
-import pdb
->>>>>>> ba3a149 ([pre-commit.ci] auto fixes from pre-commit.com hooks)
 import time
 
 
