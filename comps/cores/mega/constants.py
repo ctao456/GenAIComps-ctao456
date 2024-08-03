@@ -46,6 +46,7 @@ class MegaServiceEndpoint(Enum):
     TRANSLATION = "/v1/translation"
     RETRIEVALTOOL = "/v1/retrievaltool"
     FAQ_GEN = "/v1/faqgen"
+    AVATAR_CHATBOT = "/v1/avatarchatbot"
     # Follow OPENAI
     EMBEDDINGS = "/v1/embeddings"
     TTS = "/v1/audio/speech"
