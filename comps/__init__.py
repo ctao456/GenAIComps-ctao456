@@ -19,14 +19,11 @@ from comps.cores.proto.docarray import (
     RAGASScores,
     GraphDoc,
     LVMDoc,
-<<<<<<< HEAD
     LVMVideoDoc,
     ImageDoc,
     TextImageDoc,
     MultimodalDoc,
     EmbedMultimodalDoc,
-=======
->>>>>>> 23ad1b1 (animation microservice update)
     AnimationDoc,
 )
 
@@ -49,6 +46,7 @@ from comps.cores.mega.gateway import (
     RetrievalToolGateway,
     FaqGenGateway,
     VisualQnAGateway,
+    AvatarChatbotGateway,
 )
 
 # Telemetry
