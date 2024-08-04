@@ -45,7 +45,8 @@ async def audio_to_text(audio: Base64ByteStrDoc):
     if logflag:
         logger.info(response)
     statistics_dict["opea_service@asr"].append_latency(time.time() - start, None)
-    return LLMParamsDoc(query=response.json()["asr_result"])
+    # return LLMParamsDoc(query=response.json()["asr_result"]) # key name changed
+    return LLMParamsDoc(query=response.json()["text"])
 
 
 if __name__ == "__main__":
