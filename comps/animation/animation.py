@@ -199,12 +199,9 @@ def animate(input: Base64ByteStrDoc):
     # )
     # subprocess.call(command, shell=platform.system() != "Windows")
 
-    ffmpeg.input(args.audio).input("temp/result.avi").output(args.outfile, 
-                                                             strict='-2', 
-                                                             crf=23, 
-                                                             vcodec='libx264',
-                                                             preset='medium',
-                                                             acodec='aac').run()
+    ffmpeg.input(args.audio).input("temp/result.avi").output(
+        args.outfile, strict="-2", crf=23, vcodec="libx264", preset="medium", acodec="aac"
+    ).run()
 
     statistics_dict["opea_service@animation"].append_latency(time.time() - start, None)
     # return_str = f"Video generated successfully, check {args.outfile} for the result."
