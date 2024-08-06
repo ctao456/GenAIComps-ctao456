@@ -208,7 +208,7 @@ def animate(input: Base64ByteStrDoc):
         vcodec="libx264",
         preset="medium",
         acodec="aac",
-    ).run()
+    ).run(overwrite_output=True)
 
     statistics_dict["opea_service@animation"].append_latency(time.time() - start, None)
     # return_str = f"Video generated successfully, check {args.outfile} for the result."
