@@ -392,11 +392,11 @@ class AudioQnAGateway(Gateway):
         result_dict, runtime_graph = await self.megaservice.schedule(
             initial_inputs={"byte_str": chat_request.audio}, llm_parameters=parameters
         )
-
+        print(result_dict, runtime_graph.all_leaves())
         last_node = runtime_graph.all_leaves()[-1]
         response = result_dict[last_node]["byte_str"]
 
-        return response
+        return response[:100]
 
 
 class SearchQnAGateway(Gateway):
@@ -425,7 +425,7 @@ class SearchQnAGateway(Gateway):
             # Here it suppose the last microservice in the megaservice is LLM.
             if (
                 isinstance(response, StreamingResponse)
-                and node == list(self.megaservice.services.keys())[-1]
+                and node == list(self.megaservice.services.keys())[]
                 and self.megaservice.services[node].service_type == ServiceType.LLM
             ):
                 return response
@@ -514,7 +514,6 @@ class AvatarChatbotGateway(Gateway):
         result_dict, runtime_graph = await self.megaservice.schedule(
             initial_inputs={"byte_str": chat_request.audio}, llm_parameters=parameters
         )
-        print(result_dict, runtime_graph.all_leaves())
         last_node = runtime_graph.all_leaves()[-1]
         response = result_dict[last_node]["video_save_path"]
         return response
