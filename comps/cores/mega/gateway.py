@@ -514,7 +514,7 @@ class AvatarChatbotGateway(Gateway):
         result_dict, runtime_graph = await self.megaservice.schedule(
             initial_inputs={"byte_str": chat_request.audio}, llm_parameters=parameters
         )
-
+        print(result_dict, runtime_graph.all_leaves())
         last_node = runtime_graph.all_leaves()[-1]
         response = result_dict[last_node]["video_save_path"]
         return response
