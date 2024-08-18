@@ -68,8 +68,17 @@ class SpeechT5Model:
             if text[idx] in hitted_ends:
                 cur_end = idx
             idx += 1
-        # deal with the last sequence
-        res.append(text[cur_start:idx])
+        # # deal with the last sequence
+        # res.append(text[cur_start:idx])
+        # res = [i + "." for i in res]  # avoid unexpected end of sequence
+
+        # ctao - deal with the last sequence
+        if cur_start < len(text):
+            last_chunk = text[cur_start:]
+            last_punc_idx = max([last_chunk.rfind(punc) for punc in hitted_ends])
+            if last_punc_idx != -1:
+                last_chunk = last_chunk[: last_punc_idx + 1]
+                res.append(last_chunk[: last_punc_idx + 1])
         res = [i + "." for i in res]  # avoid unexpected end of sequence
         return res
 
