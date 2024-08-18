@@ -378,7 +378,6 @@ class AudioQnAGateway(Gateway):
 
     async def handle_request(self, request: Request):
         data = await request.json()
-
         chat_request = AudioChatCompletionRequest.parse_obj(data)
         parameters = LLMParams(
             # relatively lower max_tokens for audio conversation
@@ -392,11 +391,12 @@ class AudioQnAGateway(Gateway):
         result_dict, runtime_graph = await self.megaservice.schedule(
             initial_inputs={"byte_str": chat_request.audio}, llm_parameters=parameters
         )
-        print(result_dict, runtime_graph.all_leaves())
-        last_node = runtime_graph.all_leaves()[-1]
-        response = result_dict[last_node]["byte_str"]
 
-        return response[:100]
+        last_node = runtime_graph.all_leaves()[-1]
+        response = {"byte_str": result_dict[last_node]["byte_str"],
+                    "text": result_dict["llm/MicroService"]["text"]}
+
+        return response
 
 
 class SearchQnAGateway(Gateway):
