@@ -425,7 +425,7 @@ class SearchQnAGateway(Gateway):
             # Here it suppose the last microservice in the megaservice is LLM.
             if (
                 isinstance(response, StreamingResponse)
-                and node == list(self.megaservice.services.keys())[]
+                and node == list(self.megaservice.services.keys())[-1]
                 and self.megaservice.services[node].service_type == ServiceType.LLM
             ):
                 return response
