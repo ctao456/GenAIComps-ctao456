@@ -1,5 +1,8 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2013--2023, librosa development team.
+# Copyright 1999-2003 The OpenLDAP Foundation, Redwood City, California, USA.  All Rights Reserved.
+# Copyright (c) 2012, Anaconda, Inc. All rights reserved.
 
 import os
 import pathlib
